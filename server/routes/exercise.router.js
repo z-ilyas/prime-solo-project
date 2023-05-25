@@ -7,20 +7,21 @@ const router = express.Router();
  */
 router.get('/', (req, res) => {
   // GET route code here
-  console.log('Here is the Data from Saga', req.body);
-  const date = req.body.date;
-  console.log(req.body.date);
+  const userId = req.user.id;
+
+  const sqlValues = [userId];
+
   const query = `
-    SELECT "name" FROM "exercise" 
-    WHERE "date" = '$1' 
-    and "is_completed" = 'false';
+    SELECT * FROM "exercise" 
+    WHERE "user_id" = $1; 
   `;
-  pool.query(query, [date])
+  pool.query(query, sqlValues)
     .then( result => {
       res.send(result.rows);
+      console.log('here is the data from the database', result.rows);
     })
     .catch(err => {
-      console.log('ERROR: Get all movies', err);
+      console.log('ERROR: Get all execises', err);
       res.sendStatus(500)
     })
 

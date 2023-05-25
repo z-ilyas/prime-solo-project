@@ -19,6 +19,8 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import ThisExercise from '../ThisExercise/ThisExercise';
+import CreateExercise from '../CreateExercise/CreateExercise';
 
 import './App.css';
 
@@ -108,6 +110,12 @@ function App() {
               // Otherwise, show the Landing page
               <LandingPage />
             }
+          </Route>
+          <Route exact path = "/thisExercise/:id">
+            <ThisExercise/>
+          </Route>
+          <Route exact path = "/createExercise">
+            <CreateExercise/>
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
