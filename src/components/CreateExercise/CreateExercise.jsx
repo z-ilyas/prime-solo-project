@@ -4,22 +4,26 @@ import { useDispatch } from "react-redux";
 
 function CreateExercise() {
     const [name, setName] = useState('');
-    const [date, setDate] = useState();
+    const [date, setDate] = useState('');
+    const dispatch = useDispatch();
 
     const createExercise = () => {
         dispatch({ 
             type: 'SAGA_CREATE_EXERCISE',
             payload:{
                 name: name,
-                date: date
+                date: date,
+                is_completed: false
             }
         });
+        setName('');
+        setDate('');
     }
 
     return(
      <div>
         <input
-            placeholder='image'
+            placeholder='name'
             type="text"
             value={name}
             required

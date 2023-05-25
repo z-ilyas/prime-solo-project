@@ -111,7 +111,7 @@ function App() {
               <LandingPage />
             }
           </Route>
-          <Route exact path = "/thisExercise/:id">
+          <Route exact path = "/thisExercise">
             <ThisExercise/>
           </Route>
           <Route exact path = "/createExercise">
