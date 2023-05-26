@@ -10,15 +10,18 @@ function DisplayExercises() {
 
     const dispatch = useDispatch();
     const history = useHistory();
-
-    const dateSelected = () => {
+ 
+    const rightDate = (sqlDate, name) => {
         dispatch({ 
-                    type: 'SAGA_GET_ALL_EXERCISES',
-                });
-    }
+            type: 'SAGA_GET_ALL_EXERCISES',
+        });
+        const date = new Date (sqlDate);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0'); 
+        const correctDate =  `${year}-${month}-${day}`;
 
-    const rightDate = (date, name) => {
-        if(theDate === date){
+        if(theDate === correctDate){
             return (
                 <p>{name}</p>
             )
@@ -30,20 +33,16 @@ function DisplayExercises() {
             type: 'SAGA_GET_ONLY_EXERCISE',
             payload: id
         });
-        history.push("/thisExercise");
+        history.push("/thisExercise/:id");
     }
      
     const goToCreatePage = () => {
         history.push('/createExercise');
     }
-    const goToUserPage = () => {
-        history.push('/user');
-    }
 
     return(
         <div>
             <input type = "date" onChange={e => setTheDate(e.target.value)}/>
-            <button onClick={dateSelected}>Select</button>
                 {allExercises.map(exercise => {
                     return(
                         <p key={exercise.id} onClick={() => selectedExercise(exercise.id)}>{rightDate(exercise.date, exercise.name)}</p>                )
