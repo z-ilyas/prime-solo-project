@@ -11,8 +11,9 @@ router.get('/', (req, res) => {
   const sqlValues = [userId];
 
   const query = `
-    SELECT * FROM "exercise" 
-    WHERE "user_id" = $1; 
+  SELECT * FROM "exercise"
+  WHERE "is_completed"= false 
+  and "user_id" = $1;
   `;
   pool.query(query, sqlValues)
     .then( result => {
@@ -110,8 +111,23 @@ router.post('/:id', (req, res) => {
   })
 });
 
+router.put('/:id', (req, res) => {
 
+  const id = req.params.id;
 
-
+  const sqlText = `
+    UPDATE "exercise"
+    SET "is_completed"= true
+    WHERE "id" = $1;
+  `;
+  pool.query (sqlText, [id])
+    .then(dbRes => {
+      res.sendStatus(200)
+    })
+    .catch(dbErr => {
+      console.log('Error iside PUT /id:', dbErr);
+      res.sendStatus(500);
+    })
+});
 
 module.exports = router;
