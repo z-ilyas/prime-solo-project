@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { useState} from 'react';
 import { useDispatch } from "react-redux";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 function ThisExercise() {
     const thisExercise = useSelector((store) => store.specificExercise);
@@ -10,6 +10,7 @@ function ThisExercise() {
     const [reps, setReps] = useState('');
     const [liftingWeight, setLiftingWeight] = useState('');
     const dispatch = useDispatch();
+    const history = useHistory();
 
     const convertDate = (sqlDate) => {
         const date = new Date (sqlDate);
@@ -25,6 +26,7 @@ function ThisExercise() {
                     type: 'SAGA_DELETE_THIS_EXERCISE',
                     payload: id
                 })
+        history.push('/user');
     }
     const completedTheExercise = () => {
         dispatch({
@@ -40,7 +42,7 @@ function ThisExercise() {
                     type: 'SAGA_COMPLETE_EXERCISE_TRUE',
                     payload: id
                 })
-        
+        history.push('/user');
     }
     return(
         <div>

@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function CreateExercise() {
     const [name, setName] = useState('');
-    const [date, setDate] = useState('');
+    const [date, setDate] = useState();
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -21,7 +21,7 @@ function CreateExercise() {
             }
         });
         setName('');
-        setDate('');
+        setDate();
     }
     const goToUserPage = () => {
         history.push('/user');
