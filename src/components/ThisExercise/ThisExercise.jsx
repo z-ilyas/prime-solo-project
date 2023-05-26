@@ -26,7 +26,22 @@ function ThisExercise() {
                     payload: id
                 })
     }
-
+    const completedTheExercise = () => {
+        dispatch({
+                    type: 'SAGA_COMPLETE__EXERCISE',
+                    payload: {
+                        id: id,
+                        sets: sets,
+                        reps: reps,
+                        liftngWeight: liftngWeight
+                    }
+                })
+                dispatch({
+                    type: 'SAGA_COMPLETE_EXERCISE_TRUE',
+                    payload: id
+                })
+        
+    }
     return(
         <div>
             {thisExercise.map((theexercise) => {
@@ -58,7 +73,7 @@ function ThisExercise() {
         onChange={(event) => setLiftingWeight(event.target.value)}    
         />
         <button onClick={deleteExercise}>Delete</button>
-        <button>Complete</button>
+        <button onClick={completedTheExercise}>Complete</button>
         </div>
     )
 }
