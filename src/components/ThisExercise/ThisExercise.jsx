@@ -8,7 +8,7 @@ function ThisExercise() {
     const thisExercise = useSelector((store) => store.specificExercise);
     const [sets, setSets] = useState('');
     const [reps, setReps] = useState('');
-    const [liftngWeight, setLiftingWeight] = useState('');
+    const [liftingWeight, setLiftingWeight] = useState('');
     const dispatch = useDispatch();
 
     const convertDate = (sqlDate) => {
@@ -33,7 +33,7 @@ function ThisExercise() {
                         id: id,
                         sets: sets,
                         reps: reps,
-                        liftngWeight: liftngWeight
+                        liftingWeight: liftingWeight
                     }
                 })
                 dispatch({
@@ -53,22 +53,22 @@ function ThisExercise() {
             })}
         <input
         placeholder='sets'
-        type="text"
+        type="number"
         value={sets}
         required
         onChange={(event) => setSets(event.target.value)}    
         />
         <input
         placeholder='reps'
-        type="text"
+        type="number"
         value={reps}
         required
         onChange={(event) => setReps(event.target.value)}    
         />
         <input
         placeholder='Lifting Weight'
-        type="text"
-        value={liftngWeight}
+        type="number"
+        value={liftingWeight}
         required
         onChange={(event) => setLiftingWeight(event.target.value)}    
         />

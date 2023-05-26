@@ -8,7 +8,6 @@ const router = express.Router();
 router.get('/', (req, res) => {
   // GET route code here
   const userId = req.user.id;
-
   const sqlValues = [userId];
 
   const query = `
@@ -32,12 +31,10 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   // POST route code here
   console.log('Here is the data we are recieving', req.body);
-
   const name= req.body.name;
   const date = req.body.date;
   const is_completed = req.body.is_completed;
   const userId = req.user.id;
-
   const sqlValues = [userId, name, date, is_completed];
 
   const query = `
@@ -74,6 +71,7 @@ router.get('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   const id = req.params.id
+
   const sqlText = `
     DELETE FROM "exercise"
       WHERE id=$1;
@@ -86,6 +84,30 @@ router.delete('/:id', (req, res) => {
       console.log('Error iside DELETE /favorite/:favid:', dbErr);
       res.sendStatus(500);
     })
+});
+
+router.post('/:id', (req, res) => {
+
+  console.log('here is the complete button data', req.body);
+  const sets= req.body.sets;
+  const reps = req.body.reps;
+  const liftingWeight = req.body.liftingWeight;
+  const id = req.params.id;
+  const userId = req.user.id;
+  const sqlValues = [id, userId, sets, reps, liftingWeight];
+
+  const query = `
+  INSERT INTO "user_exercise" 
+  ("exercise_id", "user_id", "sets", "reps", "lifting_weights")
+  VALUES ($1, $2, $3, $4, $5);
+  `;
+  pool.query(query, sqlValues)
+  .then( result => {
+    res.sendStatus(201);
+  }).catch(err => {
+    console.log(err);
+    res.sendStatus(500)
+  })
 });
 
 
