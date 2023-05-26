@@ -5,7 +5,7 @@ import userSaga from './user.saga';
 import getAllExercisesSaga from './getAllExercises.saga';
 import createExercise from './createExercise.saga';
 import getThisExerciseSaga from './thisExercise.saga';
-
+import deleteExercise from './deleteExercise.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -20,6 +20,7 @@ export default function* rootSaga() {
     userSaga(),
     getAllExercisesSaga(),
     createExercise(),
-    getThisExerciseSaga()
+    getThisExerciseSaga(),
+    deleteExercise()
   ]);
 }

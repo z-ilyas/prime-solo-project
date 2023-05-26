@@ -1,19 +1,41 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { useState} from 'react';
+import { useDispatch } from "react-redux";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
 function ThisExercise() {
     const thisExercise = useSelector((store) => store.specificExercise);
     const [sets, setSets] = useState('');
     const [reps, setReps] = useState('');
     const [liftngWeight, setLiftingWeight] = useState('');
+    const dispatch = useDispatch();
+
+    const convertDate = (sqlDate) => {
+        const date = new Date (sqlDate);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0'); 
+        return `${year}-${month}-${day}`;
+    }
+    let { id } = useParams();
+
+    const deleteExercise = () => {
+        dispatch({
+                    type: 'SAGA_DELETE_THIS_EXERCISE',
+                    payload: id
+                })
+    }
 
     return(
         <div>
-            {thisExercise.map(theexercise => {
+            {thisExercise.map((theexercise) => {
                     return(
-                        <p >{theexercise.name}</p>                )
-                })}
+                        <>
+                            <p>{convertDate(theexercise.date)}</p>
+                            <p>{theexercise.name}</p>
+                        </>                )
+            })}
         <input
         placeholder='sets'
         type="text"
@@ -35,7 +57,7 @@ function ThisExercise() {
         required
         onChange={(event) => setLiftingWeight(event.target.value)}    
         />
-        <button>Delete</button>
+        <button onClick={deleteExercise}>Delete</button>
         <button>Complete</button>
         </div>
     )

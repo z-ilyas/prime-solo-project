@@ -58,7 +58,7 @@ router.get('/:id', (req, res) => {
   const id = req.params.id
 
   const query = `
-  SELECT "name" FROM "exercise"
+  SELECT "name", "date" FROM "exercise"
   WHERE "id" = $1;
   `;
   pool.query(query, [id])
