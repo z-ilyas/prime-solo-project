@@ -31,20 +31,22 @@ router.get('/', (req, res) => {
  */
 router.post('/', (req, res) => {
   // POST route code here
-  console.log(req.body);
+  console.log('Here is the data we are recieving', req.body);
 
-  const name= req.body.name
-  const date = req.body.date
-  const is_completed = req.body.is_completed
-  const userId = req.user.id
+  const name= req.body.name;
+  const date = req.body.date;
+  const is_completed = req.body.is_completed;
+  const userId = req.user.id;
 
-  const createExercise = `
+  const sqlValues = [userId, name, date, is_completed];
+
+  const query = `
   INSERT INTO "exercise" 
-  ("name", "date", "is_completed", "user_id")
+  ("user_id", "name", "date", "is_completed" )
   VALUES ($1, $2, $3, $4);`
   ;
-  pool.query(createExercise [name, date, is_completed, userId])
-  .then(result => {
+  pool.query(query, sqlValues)
+  .then( result => {
     res.sendStatus(201);
   }).catch(err => {
     console.log(err);
