@@ -1,4 +1,4 @@
-const specificExercise = (state = {}, action) => {
+const specificExercise = (state = [], action) => {
     switch (action.type) {
       case 'GET_THIS_EXERCISE':
         return action.payload;
