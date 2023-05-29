@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { put, takeLatest } from 'redux-saga/effects';
 
-function* fetchAllExercises(action) {
+function* fetchAllExercises() {
     try {
       const allExercises = yield axios.get('/api/exercise');
       yield put({ type: 'GET_ALL_EXERCISES', payload: allExercises.data});

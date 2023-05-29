@@ -1,16 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-
 
 function CreateExercise() {
     const [name, setName] = useState('');
     const [date, setDate] = useState();
     const dispatch = useDispatch();
     const history = useHistory();
+    const completedExercises = useSelector((store) => store.completedExercisesReducer);
+    console.log('Here is the completed Exercises', completedExercises);
 
-
+    useEffect(() => {
+        dispatch({
+            type: 'SAGA_FETCH_COMPLETED_EXERCISES'
+        })
+      }, []);
     const createExercise = () => {
         dispatch({ 
             type: 'SAGA_CREATE_EXERCISE',
@@ -28,6 +33,19 @@ function CreateExercise() {
     }
     return(
      <div>
+        <select>
+            <option> 
+                <p>Put new Exercise Here</p>
+            </option>
+            {completedExercises.map(exercise => (
+            <option key={exercise.id} value={exercise.id}>
+                {exercise.name}
+          </option>
+          ))}
+        </select>
+
+
+        
         <input
             placeholder='name'
             type="text"
