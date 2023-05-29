@@ -9,6 +9,7 @@ import deleteExercise from './deleteExercise.saga';
 import completeExercise from './completeExercise.saga';
 import turnExerciseTrue from './turnExerciseTrue.saga';
 import completedExercise from './completedExercises.saga';
+import previousExercise from './previousExercises.saga';
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
 // This is imported in index.js as rootSaga
@@ -27,6 +28,7 @@ export default function* rootSaga() {
     deleteExercise(),
     completeExercise(),
     turnExerciseTrue(),
-    completedExercise()
+    completedExercise(),
+    previousExercise()
   ]);
 }
