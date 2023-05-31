@@ -5,28 +5,87 @@ body,
 }
 
 body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  margin: 0px;
+  background-image: url('../Images/yellow-notebook.png');
+  background-repeat: repeat;
+  margin: 0;
+}
+.displayDate{
+  padding: 15px;
+  margin: 0;
+}
+input[type="date"]{
+  background-color: #7f76ba;
+  /* position: absolute; */
+  color: #edf4ee;
+  font-family: Roboto monospace;
+  font-size: large;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+::-webkit-calendar-picker-indicator{
+  background-color: #24c782;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 3px;
+}
+.exercisesContainer{
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-img {
-  display: inline-block;
-  max-width: 100%;
+.exerciseBox {
+  /* Add styles for the exercise box */
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  background-color: #ccdced;
+  border-radius: 10px;
+  transition: background-color 0.3s ease; 
+}
+.exerciseBox:hover {
+  background-color: #cf0edc; 
+}
+.exercise {
+  /* Add styles for the exercises text */
+  margin: 0;
+  font-family: fantasy;
+  color: #000066;
+}
+.footerDisplayPage {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00acb0;
+  padding: 10px;
 }
 
-/* --------------------------------------------------------------------------------
-Container
--------------------------------------------------------------------------------- */
-
-.container {
-  padding: 20px;
+.footerDisplayPage button {
+  padding: 10px 20px;
+  font-size: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-/* --------------------------------------------------------------------------------
-Button
--------------------------------------------------------------------------------- */
+.footerDisplayPage button:hover {
+  background-color: #cf0edc;
+}
 
-.btn {
+/* .btn {
   display: inline-block;
   padding: 10px 20px;
   border-color: #014041;
@@ -37,8 +96,8 @@ Button
   font-size: 1.1rem;
   outline: 0;
   cursor: pointer;
-}
-
+} */
+/* 
 .btn_sizeMin {
   min-height: 50px;
   min-width: 100px;
@@ -57,7 +116,7 @@ Button
 .btn:hover {
   background-color: #008183;
   text-decoration: none;
-}
+} */
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {

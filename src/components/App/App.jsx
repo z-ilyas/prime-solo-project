@@ -9,7 +9,6 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 
 import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -21,7 +20,6 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ThisExercise from '../ThisExercise/ThisExercise';
 import CreateExercise from '../CreateExercise/CreateExercise';
-
 import './App.css';
 
 function App() {
@@ -123,9 +121,10 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
-        <Footer />
+       
       </div>
     </Router>
+    
   );
 }
 

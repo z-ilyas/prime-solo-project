@@ -29,6 +29,8 @@ function DisplayExercises() {
                 <p>{name}</p>
             )
         }
+        return null; 
+        
     }
 
     const selectedExercise = (id) => {
@@ -46,15 +48,41 @@ function DisplayExercises() {
         })
     }
 
+    const filteredExercises = allExercises.filter((exercise) => {
+        const date = new Date(exercise.date);
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        const exerciseDate = `${year}-${month}-${day}`;
+    
+        return exerciseDate === theDate;
+      });
+
     return(
         <div>
-            <input type = "date" onChange={e => setTheDate(e.target.value)}/>
-                {allExercises.map(exercise => {
-                    return(
-                        <p key={exercise.id} onClick={() => selectedExercise(exercise.id)}>{rightDate(exercise.date, exercise.name)}</p>                )
-                })}
-            <button onClick={goToCreatePage}>+</button>
+            <div>
+                <input 
+                className='displayDate'
+                type = "date" 
+                onChange={e => setTheDate(e.target.value)}/>
+            </div>
+            {filteredExercises.length > 0 && (
+            <div>
+                <ul className='exercisesContainer'>
+                    {filteredExercises.map(exercise => {
+                        return(
+                            <div className='exerciseBox' key={exercise.id} onClick={() => selectedExercise(exercise.id)}>
+                                <li className='exercise'>{rightDate(exercise.date, exercise.name)}</li>                
+                            </div>
+                        )})}
+                </ul>
+            </div>
+            )}
+            <footer className="footerDisplayPage">
+                <button onClick={goToCreatePage}>+</button>
+            </footer>
         </div>
+        
     );
 }
 export default DisplayExercises;

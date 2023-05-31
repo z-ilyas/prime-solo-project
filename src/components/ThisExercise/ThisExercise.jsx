@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 import { useState} from 'react';
 import { useDispatch } from "react-redux";
 import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
+import Swal from "sweetalert2";
+
 
 function ThisExercise() {
     const thisExercise = useSelector((store) => store.specificExercise);
@@ -29,6 +31,12 @@ function ThisExercise() {
         history.push('/user');
     }
     const completedTheExercise = () => {
+        if(sets === '' || reps === '' || liftingWeight === ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'PLEASE FILL IN ALL THE INPUTS',
+              })
+        }else{
         dispatch({
                     type: 'SAGA_COMPLETE__EXERCISE',
                     payload: {
@@ -43,6 +51,16 @@ function ThisExercise() {
                     payload: id
                 })
         history.push('/user');
+        }
+    }
+    const goToUserPage = () => {
+        history.push('/user');
+    }
+    const goToCreatePage = () => {
+        history.push('/createExercise');
+        dispatch({
+            type: 'SAGA_FETCH_COMPLETED_EXERCISES'
+        })
     }
     return(
         <div>
@@ -76,6 +94,12 @@ function ThisExercise() {
         />
         <button onClick={deleteExercise}>Delete</button>
         <button onClick={completedTheExercise}>Complete</button>
+
+        <footer className="footerThisExercise">
+                <button onClick={goToCreatePage}>+</button>
+                <button onClick={goToUserPage}>Back</button>
+        </footer>
+        
         </div>
     )
 }

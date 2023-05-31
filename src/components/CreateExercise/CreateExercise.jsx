@@ -2,18 +2,25 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import Swal from "sweetalert2";
 
 function CreateExercise() {
     
     const [Previous, setPrevious] = useState('');
     const [name, setName] = useState('');
-    const [date, setDate] = useState();
+    const [date, setDate] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
     const completedExercises = useSelector((store) => store.completedExercisesReducer);
 
     const createExercise = () => {
-        if(name){
+        if(name === '' || date === '' || Previous === ''){
+            Swal.fire({
+                icon: 'error',
+                title: 'PLEASE FILL IN ALL THE INPUTS',
+              })
+        }
+        else if(name){
         dispatch({ 
             type: 'SAGA_CREATE_EXERCISE',
             payload:{
@@ -42,8 +49,9 @@ function CreateExercise() {
     return(
      <div>
         <select value={Previous} onChange={(event) => setPrevious(event.target.value)}>
+            <option>Drop Down</option>
             <option value="newExercise"> 
-                <p>Create Exercises</p>
+                <p>Create New Exercise</p>
             </option>
             {completedExercises.map(exercise => (
             <option key={exercise.id} value={exercise.name}>
