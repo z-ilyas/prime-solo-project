@@ -47,7 +47,8 @@ function CreateExercise() {
     }
     
     return(
-     <div>
+        <div>
+     <div className="create-exercise-container">
         <select value={Previous} onChange={(event) => setPrevious(event.target.value)}>
             <option>Drop Down</option>
             <option value="newExercise"> 
@@ -61,6 +62,7 @@ function CreateExercise() {
         </select>
         {Previous === 'newExercise' && (
         <input
+            className="name-input"
             placeholder='Create New Exercise'
             type="text"
             value={name}
@@ -68,9 +70,14 @@ function CreateExercise() {
             onChange={(event) => setName(event.target.value)}    
         />
         )}
-        <input type = "date" onChange={e => setDate(e.target.value)}/>  
-        <button onClick={createExercise}>Create</button>
+        <div className="date-input">
+            <input type = "date" onChange={e => setDate(e.target.value)}/>  
+        </div>
+        <button className="create-btn" onClick={createExercise}>Create</button>
+        </div>
+        <div className="back-btn" >
         <button onClick={goToUserPage}>Back</button>
+        </div>
      </div>
     )
 }
