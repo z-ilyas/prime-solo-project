@@ -85,38 +85,86 @@ input[type="date"]{
   background-color: #cf0edc;
 }
 
-/* .btn {
-  display: inline-block;
-  padding: 10px 20px;
-  border-color: #014041;
-  border-width: 1px 1px 3px;
-  border-radius: 4px;
+.footerThisExercise {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px;
   background-color: #00acb0;
-  color: #f8f8f8;
-  font-size: 1.1rem;
-  outline: 0;
+}
+
+.footerThisExercise button {
+  flex-grow: 1;
+  margin: 0 5px;
+  padding: 10px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
   cursor: pointer;
-} */
-/* 
-.btn_sizeMin {
-  min-height: 50px;
-  min-width: 100px;
+  outline: none;
+  margin: 0 10px;
 }
 
-.btn_sizeSm {
-  padding: 10px 15px;
-  font-size: 0.8rem;
+.footerThisExercise button:hover {
+  background-color: #cf0edc;
+}
+.exercise-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.theDate {
+  position: relative;
+  display: inline-block;
+  background-color: #7f76ba;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }
 
-.btn_sizeFull {
+.theExercise {
+  text-align: center;
   display: block;
-  width: 100%;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 0 auto;
+  text-align: center;
+  color: rgb(10, 40, 235);
+  font-size: large;
+}
+.inputs-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-.btn:hover {
-  background-color: #008183;
-  text-decoration: none;
-} */
+.inputs-container input {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 200px;
+  display: flex;
+  justify-content: center;
+  background-color: #ccdced;
+  border-radius: 10px;
+  transition: background-color 0.3s ease; 
+}
+.delete-complete-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.delete-complete-btn{
+  margin: 0 10px;}
+
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {

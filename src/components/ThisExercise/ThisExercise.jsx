@@ -66,11 +66,15 @@ function ThisExercise() {
         <div>
             {thisExercise.map((theexercise) => {
                     return(
-                        <>
+                        <div>
+                        <div className="theDate" >
                             <p>{convertDate(theexercise.date)}</p>
-                            <p>{theexercise.name}</p>
-                        </>                )
-            })}
+                        </div>    
+                         <div className="theExercise" >
+                         <p>{theexercise.name}</p>                     </div>      
+                        </div>          
+                    )})}
+        <div className="inputs-container">
         <input
         placeholder='sets'
         type="number"
@@ -86,15 +90,17 @@ function ThisExercise() {
         onChange={(event) => setReps(event.target.value)}    
         />
         <input
-        placeholder='Lifting Weight'
+        placeholder='Lifting Weight in lbs'
         type="number"
         value={liftingWeight}
         required
         onChange={(event) => setLiftingWeight(event.target.value)}    
         />
-        <button onClick={deleteExercise}>Delete</button>
-        <button onClick={completedTheExercise}>Complete</button>
-
+        </div>
+        <div className="delete-complete-btn">
+        <button  onClick={deleteExercise}>Delete</button>
+        <button  onClick={completedTheExercise}>Complete</button>
+        </div>
         <footer className="footerThisExercise">
                 <button onClick={goToCreatePage}>+</button>
                 <button onClick={goToUserPage}>Back</button>
