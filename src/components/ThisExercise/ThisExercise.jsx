@@ -70,8 +70,8 @@ function ThisExercise() {
                         <div className="theDate" >
                             <p>{convertDate(theexercise.date)}</p>
                         </div>    
-                         <div className="theExercise" >
-                         <p>{theexercise.name}</p>                     </div>      
+                         <div className="theExerciseContainer" >
+                         <p className="theExercise">{theexercise.name}</p>                     </div>      
                         </div>          
                     )})}
         <div className="inputs-container">

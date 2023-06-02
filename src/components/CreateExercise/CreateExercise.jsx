@@ -6,21 +6,21 @@ import Swal from "sweetalert2";
 
 function CreateExercise() {
     
-    const [Previous, setPrevious] = useState('');
     const [name, setName] = useState('');
     const [date, setDate] = useState('');
     const dispatch = useDispatch();
     const history = useHistory();
     const completedExercises = useSelector((store) => store.completedExercisesReducer);
 
+
     const createExercise = () => {
-        if(name === '' || date === '' || Previous === ''){
+        if(name === '' || date === '' ){
             Swal.fire({
                 icon: 'error',
                 title: 'PLEASE FILL IN ALL THE INPUTS',
               })
         }
-        else if(name){
+        else{
         dispatch({ 
             type: 'SAGA_CREATE_EXERCISE',
             payload:{
@@ -31,16 +31,6 @@ function CreateExercise() {
         });
         setName('');
         }
-        else if (Previous){
-            dispatch({ 
-                type: 'SAGA_CREATE_PREVIOUS_EXERCISE',
-                payload:{
-                    name: Previous,
-                    date: date,
-                    is_completed: false
-                }
-            }); 
-        }
     }
     const goToUserPage = () => {
         history.push('/user');
@@ -49,7 +39,7 @@ function CreateExercise() {
     return(
         <div>
      <div className="create-exercise-container">
-        <select value={Previous} onChange={(event) => setPrevious(event.target.value)}>
+        <select value={name} onChange={(event) => setName(event.target.value)}>
             <option>Drop Down</option>
             <option value="newExercise"> 
                 <p>Create New Exercise</p>
@@ -60,7 +50,7 @@ function CreateExercise() {
           </option>
           ))}
         </select>
-        {Previous === 'newExercise' && (
+        {name === "newExercise" && (
         <input
             className="name-input"
             placeholder='Create New Exercise'

@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useState} from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import LogOutButton from '../LogOutButton/LogOutButton';
 
 function DisplayExercises() {
 
@@ -80,6 +81,7 @@ function DisplayExercises() {
             )}
             <footer className="footerDisplayPage">
                 <button onClick={goToCreatePage}>+</button>
+                <LogOutButton/>
             </footer>
         </div>
         

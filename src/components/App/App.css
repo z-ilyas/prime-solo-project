@@ -39,7 +39,6 @@ input[type="date"]{
 }
 
 .exerciseBox {
-  /* Add styles for the exercise box */
   margin: 10px;
   padding: 10px;
   border: 1px solid black;
@@ -60,25 +59,25 @@ input[type="date"]{
   color: #000066;
 }
 .footerDisplayPage {
+  display: flex;
+  justify-content: center;
   position: fixed;
   bottom: 0;
   left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #00acb0;
+  right: 0;
   padding: 10px;
+  background-color: #00acb0;
 }
 
 .footerDisplayPage button {
-  padding: 10px 20px;
-  font-size: 20px;
+  flex-grow: 1;
+  margin: 0 5px;
+  padding: 10px;
   background-color: #007bff;
   color: #fff;
   border: none;
-  border-radius: 5px;
   cursor: pointer;
+  outline: none
 }
 
 .footerDisplayPage button:hover {
@@ -126,16 +125,22 @@ input[type="date"]{
   border-radius: 5px;
   margin-bottom: 10px;
 }
-
+.theExerciseContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
 .theExercise {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 200px;
+  background-color: #ccdced;
+  border-radius: 10px;
   text-align: center;
-  display: block;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin: 0 auto;
-  text-align: center;
-  color: rgb(10, 40, 235);
-  font-size: large;
+  font-family: fantasy;
+  color: #000066;
 }
 .inputs-container {
   display: flex;
@@ -221,18 +226,63 @@ input[type="date"]{
   background-color: #cf0edc;
 }
 
+.welcomeContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+.welcome{
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 200px;
+  background-color: #ccdced;
+  border-radius: 10px;
+  text-align: center;
+  font-family: fantasy;
+  color: #000066;
+}
+.login{
+  font-family: fantasy;
+  color: #000066;
+}
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .btn_asLink {
-  padding: 0;
-  border-width: 0;
-  border-bottom: 1px solid #444;
-  border-radius: 0;
-  background: none;
-  font: inherit;
-  color: #444;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: 200px;
+  background-color: #ccdced;
+  border-radius: 10px;
+  text-align: center;
+  font-family: fantasy;
+  color: #000066;
 }
-
+.aboutPageContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  }
+  
+  .technologies,
+  .challenges,
+  .futureGoals {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  width: auto;
+  background-color: #ccdced;
+  border-radius: 10px;
+  text-align: center;
+  font-family: fantasy;
+  color: #000066;
+  }
 .btn_asLink:hover {
   background-color: transparent;
   border-color: #008183;
