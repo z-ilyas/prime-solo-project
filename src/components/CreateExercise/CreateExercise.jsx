@@ -47,8 +47,6 @@ function CreateExercise() {
     
     // Add the following useEffect hook to check the state values after setting them
     useEffect(() => {
-        console.log("Name after state update:", name);
-        console.log("Date after state update:", date);
     }, [name, date]);
 
     const goToUserPage = () => {

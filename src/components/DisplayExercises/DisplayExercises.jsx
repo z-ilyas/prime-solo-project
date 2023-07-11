@@ -49,6 +49,7 @@ function DisplayExercises() {
         })
     }
 
+
     const filteredExercises = allExercises.filter((exercise) => {
         const date = new Date(exercise.date);
         const year = date.getFullYear();

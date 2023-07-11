@@ -3,12 +3,16 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 router.get('/', (req, res) => {
+  const userId = req.user.id;    
+  const sqlValues = [userId];
+
 
     const query = `
-      SELECT "name" FROM "exercise" 
-      WHERE "is_completed" = true;
+    SELECT "name" FROM "exercise" 
+    WHERE ("user_id", "is_completed") = ($1 ,true)
+    ;
     `;
-    pool.query(query)
+    pool.query(query, sqlValues)
       .then( result => {
         res.send(result.rows);
         console.log('here is the data from the database', result.rows);

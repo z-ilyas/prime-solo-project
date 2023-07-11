@@ -29,6 +29,6 @@ export default function* rootSaga() {
     completeExercise(),
     turnExerciseTrue(),
     completedExercise(),
-    previousExercise()
+    previousExercise(),
   ]);
 }
