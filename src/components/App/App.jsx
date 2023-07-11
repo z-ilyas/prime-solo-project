@@ -20,6 +20,7 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import ThisExercise from '../ThisExercise/ThisExercise';
 import CreateExercise from '../CreateExercise/CreateExercise';
+import DataChart from '../DataChart/DataChart';
 import './App.css';
 
 function App() {
@@ -114,6 +115,9 @@ function App() {
           </Route>
           <Route exact path = "/createExercise">
             <CreateExercise/>
+          </Route>
+          <Route exact path = "/datachart">
+            <DataChart/>
           </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
